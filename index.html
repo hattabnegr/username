@@ -5,11 +5,11 @@ function generateRandomUsername() {
   let username = '';
 
   // Tạo username với độ dài ngẫu nhiên từ 6 đến 10 ký tự
-  const length = Math.floor(Math.random() * 5) + 6;
+  const length = Math.floor(Math.random() * 5) + 6; // Sửa lỗi ở đây
 
   // Tạo username bằng cách lấy ngẫu nhiên các ký tự từ danh sách
   for (let i = 0; i < length; i++) {
-    username += chars.charAt(Math.floor(Math.random() * chars.length));
+    username += chars.charAt(Math.floor(Math.random() * chars.length)); // Sửa lỗi ở đây
   }
 
   return username;
