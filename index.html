@@ -8,20 +8,52 @@
     <p>Username ngẫu nhiên: <span id="randomUsername"></span></p>
 
     <script>
-        // Hàm tạo username ngẫu nhiên
-        function generateRandomUsername() {
-            const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-            let username = '';
-            const length = Math.floor(Math.random() * 5) + 6;
-            for (let i = 0; i < length; i++) {
-                username += chars.charAt(Math.floor(Math.random() * chars.length));
-            }
-            return username;
-        }
+// Hàm tạo first name ngẫu nhiên
+function generateRandomFirstName() {
+  const consonants = 'bcdfghjklmnpqrstvwxyz';
+  const vowels = 'aeiou';
+  let firstName = '';
+  const length = Math.floor(Math.random() * 4) + 4; // Độ dài từ 4 đến 7 ký tự
 
-        // Tạo và hiển thị username ngẫu nhiên
-        const randomUsername = generateRandomUsername();
-        document.getElementById('randomUsername').textContent = randomUsername;
+  for (let i = 0; i < length; i++) {
+    if (i % 2 === 0) {
+      firstName += consonants.charAt(Math.floor(Math.random() * consonants.length));
+    } else {
+      firstName += vowels.charAt(Math.floor(Math.random() * vowels.length));
+    }
+  }
+
+  return firstName.charAt(0).toUpperCase() + firstName.slice(1);
+}
+
+// Hàm tạo last name ngẫu nhiên
+function generateRandomLastName() {
+  const consonants = 'bcdfghjklmnpqrstvwxyz';
+  const vowels = 'aeiou';
+  let lastName = '';
+  const length = Math.floor(Math.random() * 6) + 4; // Độ dài từ 4 đến 9 ký tự
+
+  for (let i = 0; i < length; i++) {
+    if (i % 2 === 0) {
+      lastName += consonants.charAt(Math.floor(Math.random() * consonants.length));
+    } else {
+      lastName += vowels.charAt(Math.floor(Math.random() * vowels.length));
+    }
+  }
+
+  return lastName.charAt(0).toUpperCase() + lastName.slice(1);
+}
+
+// Hàm tạo tên đầy đủ ngẫu nhiên
+function generateRandomFullName() {
+  const firstName = generateRandomFirstName();
+  const lastName = generateRandomLastName();
+  return `${firstName} ${lastName}`;
+}
+
+// Sử dụng hàm để tạo và hiển thị tên ngẫu nhiên
+const randomFullName = generateRandomFullName();
+console.log('Tên đầy đủ ngẫu nhiên:', randomFullName);
     </script>
 </body>
 </html>
