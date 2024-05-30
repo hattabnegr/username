@@ -1,55 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Random Name Generator (JSON)</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            padding-top: 50px;
-        }
-        pre {
-            background-color: #f4f4f4;
-            padding: 20px;
-            border-radius: 5px;
-            text-align: left;
-            max-width: 500px;
-            margin: 0 auto;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <title>Random Name Generator (JSONP)</title>
 </head>
 <body>
-    <pre id="randomNameJson"></pre>
+  <h1>Random Name Generator (JSONP)</h1>
+  <p>Tên ngẫu nhiên: <span id="randomName"></span></p>
 
-    <script>
-        // Danh sách first name
-        const firstNames = [
-            'Michael', 'Christopher', 'Matthew', 'Joshua', 'Andrew',
-            'Joseph', 'Daniel', 'William', 'John', 'David',
-            'James', 'Robert', 'Emily', 'Sarah', 'Jessica',
-            'Ashley', 'Amanda', 'Samantha', 'Elizabeth', 'Megan'
-        ];
-
-        // Danh sách last name
-        const lastNames = [
-            'Smith', 'Johnson', 'Williams', 'Jones', 'Brown',
-            'Davis', 'Miller', 'Wilson', 'Moore', 'Taylor',
-            'Anderson', 'Thomas', 'Jackson', 'White', 'Harris',
-            'Martin', 'Thompson', 'Garcia', 'Martinez', 'Robinson'
-        ];
-
-        // Hàm tạo tên ngẫu nhiên
-        function generateRandomName() {
-            const firstName = firstNames[Math.floor(Math.random() * firstNames.length)];
-            const lastName = lastNames[Math.floor(Math.random() * lastNames.length)];
-            return { firstName, lastName };
-        }
-
-        // Hiển thị tên ngẫu nhiên dưới dạng JSON khi tải trang
-        const randomName = generateRandomName();
-        document.getElementById('randomNameJson').textContent = JSON.stringify(randomName);
-    </script>
+  <script>
+    function handleRandomName(data) {
+      document.getElementById('randomName').textContent = `${data.firstName} ${data.lastName}`;
+    }
+  </script>
+  <script src="api.js"></script>
+  <script>
+    const jsonpCallback = 'handleRandomName';
+    const script = document.createElement('script');
+    script.src = `https://<username>.github.io/<repo-name>/api.js?callback=${jsonpCallback}`;
+    document.body.appendChild(script);
+  </script>
 </body>
 </html>
