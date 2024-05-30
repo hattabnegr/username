@@ -10,9 +10,6 @@
             text-align: center;
             padding-top: 50px;
         }
-        h1 {
-            color: #333;
-        }
         pre {
             background-color: #f4f4f4;
             padding: 20px;
@@ -24,7 +21,6 @@
     </style>
 </head>
 <body>
-    <h1>Random Name Generator (JSON)</h1>
     <pre id="randomNameJson"></pre>
 
     <script>
@@ -53,8 +49,7 @@
 
         // Hiển thị tên ngẫu nhiên dưới dạng JSON khi tải trang
         const randomName = generateRandomName();
-        const randomNameJson = JSON.stringify(randomName, null, 2);
-        document.getElementById('randomNameJson').textContent = randomNameJson;
+        document.getElementById('randomNameJson').textContent = JSON.stringify(randomName);
     </script>
 </body>
 </html>
