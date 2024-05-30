@@ -1,59 +1,95 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Random Username Generator</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Name Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding-top: 50px;
+        }
+        h1 {
+            color: #333;
+        }
+        #randomName {
+            font-size: 24px;
+            font-weight: bold;
+            color: #666;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
-    <h1>Random Username Generator</h1>
-    <p>Username ngẫu nhiên: <span id="randomUsername"></span></p>
+    <h1>Random Name Generator</h1>
+    <p>Tên đầy đủ ngẫu nhiên: <span id="randomName"></span></p>
+    <button onclick="generateRandomName()">Tạo tên mới</button>
 
     <script>
-// Hàm tạo first name ngẫu nhiên
-function generateRandomFirstName() {
-  const consonants = 'bcdfghjklmnpqrstvwxyz';
-  const vowels = 'aeiou';
-  let firstName = '';
-  const length = Math.floor(Math.random() * 4) + 4; // Độ dài từ 4 đến 7 ký tự
+        // Danh sách vần đầu tiên
+        const firstNameSyllables = [
+            'A', 'Ab', 'Ad', 'Al', 'Am', 'An', 'Ar', 'As', 'At', 'Av', 'Ay',
+            'Ba', 'Be', 'Bi', 'Bla', 'Blo', 'Blu', 'Bo', 'Bra', 'Bre', 'Bri', 'Bro', 'Bru', 'Bu', 'By',
+            'Ca', 'Ce', 'Ch', 'Ci', 'Cla', 'Cli', 'Co', 'Cra', 'Cre', 'Cry', 'Cu',
+            // Thêm nhiều vần khác...
+        ];
 
-  for (let i = 0; i < length; i++) {
-    if (i % 2 === 0) {
-      firstName += consonants.charAt(Math.floor(Math.random() * consonants.length));
-    } else {
-      firstName += vowels.charAt(Math.floor(Math.random() * vowels.length));
-    }
-  }
+        // Danh sách vần cuối cùng
+        const lastNameSyllables = [
+            'ack', 'am', 'an', 'ance', 'ar', 'ard', 'arn', 'art', 'as', 'ash', 'at', 'ath', 'aw',
+            'bay', 'bel', 'ber', 'bert', 'ble', 'bly', 'bor', 'born', 'bour', 'bra', 'bri', 'bro', 'brun', 'bry',
+            'ca', 'ce', 'cer', 'ch', 'cha', 'che', 'cher', 'chi', 'cle', 'co', 'con', 'cour', 'cra', 'cre', 'cry', 'cu',
+            // Thêm nhiều vần khác...
+        ];
 
-  return firstName.charAt(0).toUpperCase() + firstName.slice(1);
-}
+        // Hàm tạo first name ngẫu nhiên
+        function generateRandomFirstName() {
+            const syllableCount = Math.floor(Math.random() * 2) + 1; // Từ 1 đến 2 vần
+            let firstName = '';
 
-// Hàm tạo last name ngẫu nhiên
-function generateRandomLastName() {
-  const consonants = 'bcdfghjklmnpqrstvwxyz';
-  const vowels = 'aeiou';
-  let lastName = '';
-  const length = Math.floor(Math.random() * 6) + 4; // Độ dài từ 4 đến 9 ký tự
+            for (let i = 0; i < syllableCount; i++) {
+                firstName += firstNameSyllables[Math.floor(Math.random() * firstNameSyllables.length)];
+            }
 
-  for (let i = 0; i < length; i++) {
-    if (i % 2 === 0) {
-      lastName += consonants.charAt(Math.floor(Math.random() * consonants.length));
-    } else {
-      lastName += vowels.charAt(Math.floor(Math.random() * vowels.length));
-    }
-  }
+            return firstName.charAt(0).toUpperCase() + firstName.slice(1);
+        }
 
-  return lastName.charAt(0).toUpperCase() + lastName.slice(1);
-}
+        // Hàm tạo last name ngẫu nhiên
+        function generateRandomLastName() {
+            const syllableCount = Math.floor(Math.random() * 3) + 1; // Từ 1 đến 3 vần
+            let lastName = '';
 
-// Hàm tạo tên đầy đủ ngẫu nhiên
-function generateRandomFullName() {
-  const firstName = generateRandomFirstName();
-  const lastName = generateRandomLastName();
-  return `${firstName} ${lastName}`;
-}
+            for (let i = 0; i < syllableCount; i++) {
+                lastName += lastNameSyllables[Math.floor(Math.random() * lastNameSyllables.length)];
+            }
 
-// Sử dụng hàm để tạo và hiển thị tên ngẫu nhiên
-const randomFullName = generateRandomFullName();
-console.log('Tên đầy đủ ngẫu nhiên:', randomFullName);
+            return lastName.charAt(0).toUpperCase() + lastName.slice(1);
+        }
+
+        // Hàm tạo tên đầy đủ ngẫu nhiên
+        function generateRandomFullName() {
+            const firstName = generateRandomFirstName();
+            const lastName = generateRandomLastName();
+            return `${firstName} ${lastName}`;
+        }
+
+        // Hiển thị tên ngẫu nhiên khi tải trang
+        let randomName = generateRandomFullName();
+        document.getElementById('randomName').textContent = randomName;
+
+        // Hàm xử lý sự kiện click vào nút "Tạo tên mới"
+        function generateRandomName() {
+            randomName = generateRandomFullName();
+            document.getElementById('randomName').textContent = randomName;
+        }
     </script>
 </body>
 </html>
