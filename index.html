@@ -1,20 +1,27 @@
-// Hàm tạo username ngẫu nhiên
-function generateRandomUsername() {
-  // Danh sách các ký tự sẽ được sử dụng
-  const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-  let username = '';
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Random Username Generator</title>
+</head>
+<body>
+    <h1>Random Username Generator</h1>
+    <p>Username ngẫu nhiên: <span id="randomUsername"></span></p>
 
-  // Tạo username với độ dài ngẫu nhiên từ 6 đến 10 ký tự
-  const length = Math.floor(Math.random() * 5) + 6; // Sửa lỗi ở đây
+    <script>
+        // Hàm tạo username ngẫu nhiên
+        function generateRandomUsername() {
+            const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let username = '';
+            const length = Math.floor(Math.random() * 5) + 6;
+            for (let i = 0; i < length; i++) {
+                username += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            return username;
+        }
 
-  // Tạo username bằng cách lấy ngẫu nhiên các ký tự từ danh sách
-  for (let i = 0; i < length; i++) {
-    username += chars.charAt(Math.floor(Math.random() * chars.length)); // Sửa lỗi ở đây
-  }
-
-  return username;
-}
-
-// Sử dụng hàm để tạo và hiển thị username ngẫu nhiên
-const randomUsername = generateRandomUsername();
-console.log('Username ngẫu nhiên:', randomUsername);
+        // Tạo và hiển thị username ngẫu nhiên
+        const randomUsername = generateRandomUsername();
+        document.getElementById('randomUsername').textContent = randomUsername;
+    </script>
+</body>
+</html>
