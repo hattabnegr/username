@@ -1,17 +1,13 @@
-async function generateName() {
-    const response = await fetch('names.json');
-    const names = await response.json();
+const firstNames = ["Nguyễn", "Trần", "Lê", "Phạm", "Hoàng", "Phan"]; // Thêm nhiều tên hơn
+const lastNames = ["Văn A", "Thị B", "Văn C", "Thị D"]; // Thêm nhiều họ hơn
 
-    const firstNames = names.firstNames;
-    const lastNames = names.lastNames;
+function generateName() {
+  const randomFirstName = firstNames[Math.floor(Math.random() * firstNames.length)];
+  const randomLastName = lastNames[Math.floor(Math.random() * lastNames.length)];
+  const result = {
+    firstname: randomFirstName,
+    lastname: randomLastName
+  };
 
-    const randomFirstName = firstNames[Math.floor(Math.random() * firstNames.length)];
-    const randomLastName = lastNames[Math.floor(Math.random() * lastNames.length)];
-
-    const result = {
-        firstname: randomFirstName,
-        lastname: randomLastName
-    };
-
-    document.getElementById('result').innerText = JSON.stringify(result);
+  document.getElementById("result").textContent = JSON.stringify(result, null, 2);
 }
