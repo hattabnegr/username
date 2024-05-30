@@ -1,24 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Random Name Generator (JSONP)</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Random Name Generator</title>
 </head>
 <body>
-  <h1>Random Name Generator (JSONP)</h1>
-  <p>Tên ngẫu nhiên: <span id="randomName"></span></p>
-
-  <script>
-    function handleRandomName(data) {
-      document.getElementById('randomName').textContent = `${data.firstName} ${data.lastName}`;
-    }
-  </script>
-  <script src="api.js"></script>
-  <script>
-    const jsonpCallback = 'handleRandomName';
-    const script = document.createElement('script');
-    script.src = `https://<username>.github.io/<repo-name>/api.js?callback=${jsonpCallback}`;
-    document.body.appendChild(script);
-  </script>
+    <h1>Random Name Generator API</h1>
+    <p>Use the following endpoint to get a random name:</p>
+    <code>GET /random-name</code>
 </body>
 </html>
