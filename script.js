@@ -25,7 +25,13 @@ window.fetch = () => {
   });
 };
 
-// Khi tải trang, trả về dữ liệu JSON ngay lập tức
-window.addEventListener("load", () => {
-  window.fetch();
-});
+// Ghi đè phương thức fetch() để trả về dữ liệu JSON
+window.fetch = async () => {
+  const randomUsername = getRandomUsername();
+  const jsonData = JSON.stringify({ username: randomUsername });
+  return new Response(jsonData, {
+    headers: {
+      "Content-Type": "application/json",
+    },
+  });
+};
