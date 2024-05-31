@@ -6,11 +6,12 @@
       async function fetchData() {
         const response = await fetch();
         const data = await response.json();
-        console.log(data);
+        document.getElementById('result').textContent = JSON.stringify(data, null, 2);
       }
     </script>
   </head>
   <body onload="fetchData()">
-    <!-- Không cần nội dung ở đây -->
+    <h1>Random Username</h1>
+    <pre id="result"></pre>
   </body>
 </html>
