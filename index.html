@@ -2,9 +2,15 @@
 <html>
   <head>
     <title>Random Username</title>
-    <script src="script.js"></script>
+    <script>
+      async function fetchData() {
+        const response = await fetch();
+        const data = await response.json();
+        console.log(data);
+      }
+    </script>
   </head>
-  <body>
+  <body onload="fetchData()">
     <!-- Không cần nội dung ở đây -->
   </body>
 </html>
