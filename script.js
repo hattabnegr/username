@@ -14,7 +14,7 @@ function getRandomUsername() {
   return usernames[randomIndex];
 }
 
-// Ghi đè phương thức fetch() để trả về dữ liệu JSON khi truy cập trang
+// Ghi đè phương thức fetch() để trả về dữ liệu JSON
 window.fetch = () => {
   const randomUsername = getRandomUsername();
   const jsonData = JSON.stringify({ username: randomUsername });
@@ -24,3 +24,8 @@ window.fetch = () => {
     },
   });
 };
+
+// Khi tải trang, trả về dữ liệu JSON ngay lập tức
+window.addEventListener("load", () => {
+  window.fetch();
+});
