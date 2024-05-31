@@ -15,17 +15,6 @@ function getRandomUsername() {
 }
 
 // Ghi đè phương thức fetch() để trả về dữ liệu JSON
-window.fetch = () => {
-  const randomUsername = getRandomUsername();
-  const jsonData = JSON.stringify({ username: randomUsername });
-  return new Response(jsonData, {
-    headers: {
-      "Content-Type": "application/json",
-    },
-  });
-};
-
-// Ghi đè phương thức fetch() để trả về dữ liệu JSON
 window.fetch = async () => {
   const randomUsername = getRandomUsername();
   const jsonData = JSON.stringify({ username: randomUsername });
